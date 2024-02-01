@@ -3,7 +3,6 @@
 use typify::import_types;
 
 use serde::{Deserialize, Serialize};
-use std::default;
 // works with tag = "my_tag" annotation changed
 //mod simple;
 //use simple::MainModel;
