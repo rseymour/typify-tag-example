@@ -1,0 +1,69 @@
+{
+  "$defs": {
+    "Baz": {
+      "properties": {
+        "my_type": {
+          "const": "Baz",
+          "default": "Baz",
+          "title": "My Type"
+        },
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "count"
+      ],
+      "title": "Baz",
+      "type": "object"
+    },
+    "FooBar": {
+      "properties": {
+        "my_type": {
+          "const": "FooBar",
+          "default": "FooBar",
+          "title": "My Type"
+        },
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "count"
+      ],
+      "title": "FooBar",
+      "type": "object"
+    }
+  },
+  "description": "This is the description of the main model",
+  "properties": {
+    "fbz": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "Baz": "#/$defs/Baz",
+            "FooBar": "#/$defs/FooBar"
+          },
+          "propertyName": "my_type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/FooBar"
+          },
+          {
+            "$ref": "#/$defs/Baz"
+          }
+        ]
+      },
+      "title": "Fbz",
+      "type": "array"
+    }
+  },
+  "required": [
+    "fbz"
+  ],
+  "title": "MainModel",
+  "type": "object"
+}
